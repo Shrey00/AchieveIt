@@ -13,11 +13,10 @@ const initialState = {
 
 export const signup = createAsyncThunk('userregister/fetch', async (userData, thunkAPI) => {
     try {
-        const response = await axios.post('http://localhost:5000/signup', userData);
+        const response = await axios.post('/signup', userData);
+        console.log('jyst mila response vro ' + response.data)
         if (response.data) {
-            console.log(response.data)
             localStorage.setItem('user', JSON.stringify(response.data));
-            console.log('ue to ho gya vro')
         }
         return response.data;
     } catch (error) {
@@ -30,11 +29,11 @@ export const signup = createAsyncThunk('userregister/fetch', async (userData, th
 
 export const login = createAsyncThunk('user/fetch', async (userData, thunkAPI) => {
     try {
-        const response = await axios.post('http://localhost:5000/signin', userData);
+        const response = await axios.post('/signin', userData);
         if (response.data) {
             localStorage.setItem('user', JSON.stringify(response.data));
         }
-        return response.data;
+        return response.data;   
     } catch (error) {
         const message = error.toString();
         // console.log(message)
@@ -45,7 +44,7 @@ export const login = createAsyncThunk('user/fetch', async (userData, thunkAPI) =
 
 
 export const addTodo = createAsyncThunk('user/addTodo', async (todoItem) => {
-    const response = axios.post('http://localhost:5000/postTodo', {
+     axios.post('http://localhost:5000/postTodo', {
         headers: { Authorization: `Bearer ${user.token}` },
         body: todoItem
     });
@@ -53,7 +52,7 @@ export const addTodo = createAsyncThunk('user/addTodo', async (todoItem) => {
 })
 
 export const doneTodo = createAsyncThunk('user/doneTodo', async (todoItemId) => {
-    const response = axios.post('http://localhost:5000/doneTodo', {
+    axios.post('http://localhost:5000/doneTodo', {
         headers: { Authorization: `Bearer ${user.token}` },
         body: todoItemId
     });
@@ -86,7 +85,6 @@ const authSlice = createSlice({
                 state.user = action.payload;
             })
             .addCase(login.rejected, (state,action) => {
-                console.log(action.payload)
                 state.isLoading = false;
                 state.isSuccess = false;
                 state.isFailed = true;

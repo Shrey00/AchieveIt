@@ -21,7 +21,8 @@ export const signUp = async (req, res) => {
                                                 password: hash,
                                         })
                                         const token = generateAccessToken(createdUser);
-                                        res.status(200).json({ token: token })
+                                        console.log(createdUser)
+                                        res.json({ token: token })
                                 } catch (err) {
                                         res.status(400).json({status:400, error:'Invalid Credentials'});
                                         console.log(err.message);

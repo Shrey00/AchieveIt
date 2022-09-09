@@ -1,6 +1,6 @@
 import ItemContainer from "../Components/ItemContainer";
 import { useState } from 'react';
-import ItemStringContainer from "../Components/ItemStringContainer";
+import GoalItemContainer from "../Components/GoalItemContainer";
 import { useSelector, useDispatch } from 'react-redux';
 import { selectUserTodo, selectUserDone, selectUserDoing, addTodo, reqAddTodo, getUserData, selectUserGoals } from "../features/userData/userSlice";
 import { selectUserLoginState } from "../features/users/authSlice";
@@ -20,7 +20,9 @@ const Goals = () => {
         <div className="flex justify-center bg-[#F6FBF4] h-[42.9rem]">
             <div className="flex border-2 border-green-300 justify-center w-[70rem] h-[35rem] rounded-lg text-green-100 bg-green-300 mt-14   ">
                 {
-                        
+                        goalsData?.map((goalItem, i)=>{
+                            <GoalItemContainer/>
+                        })
                 }
             </div>
         </div>

@@ -1,12 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useState, useEffect } from 'react';
-import { signup, reset, selectUserLoginState, logout } from '../features/users/authSlice';
+import { useState } from 'react';
+import { signup, reset, selectUserLoginState} from '../features/users/authSlice';
 import Button from '../Components/Button';
 import { useNavigate } from 'react-router-dom';
 const Signup = () => {
     const dispatch = useDispatch();
-    let { user } = useSelector(selectUserLoginState);
-    dispatch(logout())
+    const navigate = useNavigate();
+    let { user } = useSelector(selectUserLoginState); 
+    if (user) {
+        navigate('/welcome');
+    }
+    
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -21,13 +25,10 @@ const Signup = () => {
         }))
     }
     
-    console.log('le' + localStorage.getItem('user') + 'state wala - ' + user.token);
-    const navigate = useNavigate();
+    // console.log('le' + localStorage.getItem('user') + 'state wala - ' + user.token);
+ 
 
-
-    if (user) {
-        navigate('/welcome');
-    }
+   
 
     return (
         <div>

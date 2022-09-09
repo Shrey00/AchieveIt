@@ -19,7 +19,7 @@ const Todo = () => {
     
     const [addTodoText, setAddTodoText] = useState('');     
     return (
-        <div className="flex justify-center bg-[#F6FBF4] h-[42.9rem]">
+        <div className="flex justify-center bg-[#F6FBF4] absolute top-[3.9rem] left-0 right-0 bottom-0">
             <div className="flex border-2 border-green-300 justify-center w-[70rem] h-[35rem] rounded-lg text-green-100 bg-green-300 mt-14   ">
                 <div className="w-[33.33%] text-center border-red-100">
                     <div className="font-bold text-green-50 text-[1.2rem] ">Todo</div>

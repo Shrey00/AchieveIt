@@ -12,28 +12,30 @@ const Header = () => {
                 <div className='w-[8rem]'>
                     <img src={logoText} alt='logo' />
                 </div>
-                {
-                    user ?
-                        <div >
-                            <button className=' py-[1.2rem] px-[1rem] hover:bg-green-300'
-                                onClick={() => navigate('/todo')}>My Todos</button>
-                            <button className='py-[1.2rem] px-[1rem] hover:bg-green-300'
-                                onClick = {()=>navigate('/goals')}>Goals</button>
-                        </div>
-                        :
-                        <div>
-                            <button className=' py-[1.2rem] px-[1rem] hover:bg-green-300'
-                                onClick={() => navigate('/signup')}>Register</button>
-                            <button className='py-[1.2rem] px-[1rem] hover:bg-green-300'
-                                onClick={() => navigate('/signin')}>Sign In</button>
-                        </div>
+                    {
+                        user ?
+                            <div >
+                                <button className=' py-[1.2rem] px-[1rem] hover:bg-green-300'
+                                    onClick={() => navigate('/todo')}>My Todos</button>
+                                {/* <button className='py-[1.2rem] px-[1rem] hover:bg-green-300'
+                                    onClick = {()=>navigate('/goals')}>Goals</button> */}
+                            </div>
+                            :
+                            <div>
+                                <button className=' py-[1.2rem] px-[1rem] hover:bg-green-300'
+                                    onClick={() => navigate('/signup')}>Register</button>
+                                <button className='py-[1.2rem] px-[1rem] hover:bg-green-300'
+                                    onClick={() => navigate('/signin')}>Sign In</button>
+                            </div>
 
-                }  
+                    }  
                  </div>
                 {
                     user ?
-                            <div className='Z-2 rounded-[50%] w-[40px] h-[40px] bg-green-800 absolute right-8 top-2 hover:cursor-pointer' onClick={()=>navigate('/welcome')}>
-                        </div> : null
+                        //     <div className='Z-2 rounded-[50%] w-[40px] h-[40px] bg-green-800 absolute right-8 top-2 hover:cursor-pointer' onClick={()=>navigate('/welcome')}>
+                        // </div> : null
+                        <button className=' absolute top-0 right-4 py-[1.2rem] px-[1rem] hover:bg-green-300'
+                                    onClick={() => navigate('/welcome')}>Account</button>:null
                 }
     
          

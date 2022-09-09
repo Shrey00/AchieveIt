@@ -15,8 +15,6 @@ const GoalItemContainer = ({ text, check, note, index }) => {
                 <input className='mt-[-5px] ml-1 ' type='checkbox' value={checkBox} checked={check}
                     onChange={() => {
                         setCheckBox((prev) => !prev);
-                        dispatch(reqDoneTodoFromDoing({ user, index }));
-                        dispatch(doneTodoFromDoing(index));
                     }
                     } />
             </div>

@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk, current } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { useSelector, useDispatch } from 'react-redux';
-import { selectUserLoginState, } from '../users/authSlice';
+// import { useSelector, useDispatch } from 'react-redux';
+// import { selectUserLoginState, } from '../users/authSlice';
 const initialState = {
     email: '',
     firstName: '',
@@ -19,7 +19,7 @@ const initialState = {
 
 export const getUserData = createAsyncThunk('user/getUserData', async (user, thunkAPI) => {
     try {
-        const response = await axios.get('http://localhost:5000/me', { headers: { Authorization: `Bearer ${user.token}` } });
+        const response = await axios.get('/me', { headers: { Authorization: `Bearer ${user.token}` } });
         return response.data;
     } catch (e) {
         return thunkAPI.rejectWithValue(e.message);
@@ -28,7 +28,7 @@ export const getUserData = createAsyncThunk('user/getUserData', async (user, thu
 
 export const reqAddTodo = createAsyncThunk('user/reqAddTodo', async (todoItem) => {
     const { user, text, check, deadline } = todoItem;
-    await axios.post('http://localhost:5000/addTodo', { text, deadline, check },
+    await axios.post('/addTodo', { text, deadline, check },
         {
             headers: { Authorization: `Bearer ${user.token}` }
         });
@@ -36,7 +36,7 @@ export const reqAddTodo = createAsyncThunk('user/reqAddTodo', async (todoItem) =
 
 export const reqTransferTodoToDoing = createAsyncThunk('user/reqTransferTodoToDoing', async (Item) => {
     const { user, index } = Item;
-    await axios.post('http://localhost:5000/transferTodoToDoing', { index },
+    await axios.post('/transferTodoToDoing', { index },
         {
             headers: { Authorization: `Bearer ${user.token}` }
         });
@@ -44,7 +44,7 @@ export const reqTransferTodoToDoing = createAsyncThunk('user/reqTransferTodoToDo
 
 export const reqTransferDoneToDoing = createAsyncThunk('user/reqTransferTodoToDoing', async (Item) => {
     const { user, index } = Item;
-    await axios.post('http://localhost:5000/transferDoneToDoing', { index },
+    await axios.post('/transferDoneToDoing', { index },
         {
             headers: { Authorization: `Bearer ${user.token}` }
         });
@@ -54,7 +54,7 @@ export const reqDoneTodoFromDoing = createAsyncThunk('user/reqDoneTodoFromDoing'
     const { user, index } = Item;
     console.log('vbnm,.ghjkm,ASDFGHJKLasdfghjkldfghjklcvgbhnjmk,')
 
-    await axios.post('http://localhost:5000/doneTodoFromDoing', { index },
+    await axios.post('/doneTodoFromDoing', { index },
         {
             headers: { Authorization: `Bearer ${user.token}` }
         });
@@ -63,7 +63,7 @@ export const reqDoneTodoFromDoing = createAsyncThunk('user/reqDoneTodoFromDoing'
 export const reqDoneTodoFromTodo = createAsyncThunk('user/doneTodoFromTodo', async (Item) => {
 
     const { user, index } = Item;
-    await axios.post('http://localhost:5000/doneTodoFromTodo', { index },
+    await axios.post('/doneTodoFromTodo', { index },
         {
             headers: { Authorization: `Bearer ${user.token}` }
         });
@@ -71,7 +71,7 @@ export const reqDoneTodoFromTodo = createAsyncThunk('user/doneTodoFromTodo', asy
 
 export const moveToTodo = createAsyncThunk('user/moveToTodo', async (Item) => {
     const { user, index } = Item;
-    await axios.post('http://localhost:5000/moveToTodo', { index },
+    await axios.post('/moveToTodo', { index },
         {
             headers: { Authorization: `Bearer ${user.token}` }
         });
@@ -79,7 +79,7 @@ export const moveToTodo = createAsyncThunk('user/moveToTodo', async (Item) => {
 
 export const reqRemoveTodo = createAsyncThunk('user/removeTodo', async (Item) => {
     const { user, index } = Item;
-    await axios.post('http://localhost:5000/removeTodo', { index },
+    await axios.post('/removeTodo', { index },
         {
             headers: { Authorization: `Bearer ${user.token}` }
         });
@@ -87,7 +87,7 @@ export const reqRemoveTodo = createAsyncThunk('user/removeTodo', async (Item) =>
 
 export const reqRemoveDone = createAsyncThunk('user/removeDone', async (Item) => {
     const { user, index } = Item;
-    await axios.post('http://localhost:5000/removeDone', { index },
+    await axios.post('/removeDone', { index },
         {
             headers: { Authorization: `Bearer ${user.token}` }
         });
